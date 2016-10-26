@@ -21,6 +21,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 	public void setSf(SessionFactory sf) {
 		this.sf = sf;
 	}
+	
 
 	@Override
 	@Transactional
