@@ -44,11 +44,6 @@ public class CategorieServiceImpl implements ICategorieService {
 		return categorieDao.getAllCategorieDao();
 	}
 
-	@Override
-	public Categorie getCategorieByIdService(int id_categorie) {
-
-		return categorieDao.getCategorieByIdDao(id_categorie);
-	}
 
 	@Override
 	public Categorie getCategorieByNameService(String name) {
