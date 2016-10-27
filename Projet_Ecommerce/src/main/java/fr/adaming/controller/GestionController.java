@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/gestion")
 public class GestionController {
 
+	
 	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public String init(ModelMap model) {
 		
