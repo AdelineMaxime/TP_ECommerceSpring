@@ -7,12 +7,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import fr.adaming.model.Categorie;
 
 @Repository
-@Transactional
 public class CategorieDaoImpl implements ICategorieDao {
 	
 	@Autowired
@@ -24,7 +23,6 @@ public class CategorieDaoImpl implements ICategorieDao {
 	
 
 	@Override
-	@Transactional
 	public void addCategorieDao(Categorie categorie) {
 		
 		Session session = sf.getCurrentSession();
@@ -33,16 +31,16 @@ public class CategorieDaoImpl implements ICategorieDao {
 	}
 
 	@Override
-	@Transactional
 	public void deleteCategorieDao(Categorie categorie) {
 		
 		Session session = sf.getCurrentSession();
-		session.delete(categorie);
+		
+		String req="Delete from Categorie "
+		
 
 	}
 
 	@Override
-	@Transactional
 	public void updateCategorieDao(Categorie categorie) {
 		
 		Session session = sf.getCurrentSession();
@@ -51,7 +49,6 @@ public class CategorieDaoImpl implements ICategorieDao {
 	}
 
 	@Override
-	@Transactional(readOnly=true)
 	public List<Categorie> getAllCategorieDao() {
 		
 		Session session = sf.getCurrentSession();
@@ -61,5 +58,16 @@ public class CategorieDaoImpl implements ICategorieDao {
 		
 		return catListe;
 	}
+
+
+	@Override
+	public Categorie getCategorieByIdDao(int id_categorie) {
+		
+		
+		
+		return null;
+	}
+	
+	
 
 }

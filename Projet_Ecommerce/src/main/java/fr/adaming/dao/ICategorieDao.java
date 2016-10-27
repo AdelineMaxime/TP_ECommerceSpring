@@ -10,5 +10,6 @@ public interface ICategorieDao {
 	public void deleteCategorieDao(Categorie categorie);
 	public void updateCategorieDao(Categorie categorie);
 	public List<Categorie> getAllCategorieDao();
+	public Categorie getCategorieByIdDao(int id_categorie);
 	
 }
