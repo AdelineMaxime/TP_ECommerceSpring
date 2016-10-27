@@ -1,5 +1,7 @@
 package fr.adaming.test;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -28,14 +30,13 @@ public class ClassTestCategorie {
 		
 		//categorieService.deleteCategorieService(c2);
 		
-		Categorie c3 = new Categorie("Tele");
+//		Categorie c3 = new Categorie(3, "Video");
+//		
+//		categorieService.updateCategorieService(c3);
 		
-		//categorieService.addCategorieService(c3);
+		List<Categorie> liste = categorieService.getAllCategorieService();
 		
-		c3.setNom("Video");
-		
-		categorieService.updateCategorieService(c3);
-		
+		System.out.println(liste);
 		
 		
 		

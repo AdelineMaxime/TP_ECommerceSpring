@@ -67,15 +67,6 @@ public class CategorieDaoImpl implements ICategorieDao {
 
 
 	@Override
-	public Categorie getCategorieByIdDao(int id_categorie) {
-		
-		
-		
-		return null;
-	}
-
-
-	@Override
 	public Categorie getCategorieByNameDao(String name) {
 		
 		Session session = sf.getCurrentSession();
