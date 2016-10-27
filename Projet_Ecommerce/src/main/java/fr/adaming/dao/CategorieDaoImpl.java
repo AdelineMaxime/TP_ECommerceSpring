@@ -35,16 +35,22 @@ public class CategorieDaoImpl implements ICategorieDao {
 		
 		Session session = sf.getCurrentSession();
 		
-		String req="Delete from Categorie "
+		String req="Delete from Categorie c where c.id_categorie=:id";
+		Query query=session.createQuery(req);
+		query.setParameter("id", categorie.getId_categorie());
+		query.executeUpdate();
 		
-
 	}
 
 	@Override
 	public void updateCategorieDao(Categorie categorie) {
 		
 		Session session = sf.getCurrentSession();
-		session.saveOrUpdate(categorie);
+		String req="Update Categorie c Set c.nom=:catNom where c.id_categorie=:id";
+		Query query=session.createQuery(req);
+		query.setParameter("catNom", categorie.getNom());
+		query.setParameter("id", categorie.getId_categorie());
+		query.executeUpdate();
 
 	}
 
@@ -66,6 +72,20 @@ public class CategorieDaoImpl implements ICategorieDao {
 		
 		
 		return null;
+	}
+
+
+	@Override
+	public Categorie getCategorieByNameDao(String name) {
+		
+		Session session = sf.getCurrentSession();
+		String req="Select c from Categorie c where c.nom=:nom_cat";
+		Query query = session.createQuery(req);
+		query.setParameter("nom_cat", name);
+		
+		List<Categorie> liste = query.list();
+		Categorie cat= liste.get(0);		
+		return cat;
 	}
 	
 	

@@ -24,9 +24,21 @@ public class ClassTestCategorie {
 //		
 //		categorieService.updateCategorieService(c1);
 		
-		categorieService.deleteCategorieService(c1);
+		//Categorie c2= categorieService.getCategorieByNameService("Sport");
 		
-		System.out.println(c1);
+		//categorieService.deleteCategorieService(c2);
+		
+		Categorie c3 = new Categorie("Tele");
+		
+		//categorieService.addCategorieService(c3);
+		
+		c3.setNom("Video");
+		
+		categorieService.updateCategorieService(c3);
+		
+		
+		
+		
 		
 	}
 

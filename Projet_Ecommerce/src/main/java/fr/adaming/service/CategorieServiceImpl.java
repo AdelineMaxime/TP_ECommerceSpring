@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.ICategorieDao;
 import fr.adaming.model.Categorie;
 
 @Service("categorieServiceBean")
+@Transactional
 public class CategorieServiceImpl implements ICategorieService {
 	
 	@Autowired
@@ -46,6 +48,12 @@ public class CategorieServiceImpl implements ICategorieService {
 	public Categorie getCategorieByIdService(int id_categorie) {
 
 		return categorieDao.getCategorieByIdDao(id_categorie);
+	}
+
+	@Override
+	public Categorie getCategorieByNameService(String name) {
+		
+		return categorieDao.getCategorieByNameDao(name);
 	}
 
 }

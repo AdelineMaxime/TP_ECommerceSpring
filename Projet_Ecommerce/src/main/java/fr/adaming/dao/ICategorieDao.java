@@ -11,5 +11,6 @@ public interface ICategorieDao {
 	public void updateCategorieDao(Categorie categorie);
 	public List<Categorie> getAllCategorieDao();
 	public Categorie getCategorieByIdDao(int id_categorie);
+	public Categorie getCategorieByNameDao(String name);
 	
 }

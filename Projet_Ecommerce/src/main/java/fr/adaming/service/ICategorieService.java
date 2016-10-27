@@ -11,5 +11,6 @@ public interface ICategorieService {
 	public void updateCategorieService(Categorie categorie);
 	public List<Categorie> getAllCategorieService();
 	public Categorie getCategorieByIdService(int id_categorie);
+	public Categorie getCategorieByNameService(String name);
 
 }
