@@ -10,13 +10,11 @@
 </head>
 <body>
 
-	${title}
+<%-- 	${title} --%>
 
 	<div align="center">
-		<h1 style="background-color: lightgreen; color: darkgreen">Liste
-			des employes</h1>
+		<h1 style="background-color: lightgreen; color: darkgreen">Liste des Catégories</h1>
 	</div>
-
 
 
 	<div align="center">
