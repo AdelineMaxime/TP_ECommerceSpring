@@ -27,7 +27,7 @@ public class Panier implements Serializable{
 	 */
 		@Id
 		@GeneratedValue(strategy=GenerationType.IDENTITY)
-		private long id_panier;
+		private int id_panier;
 		
 		private Double prixTotal;
 		
@@ -58,30 +58,34 @@ public class Panier implements Serializable{
 			super();
 			this.prixTotal = prixTotal;
 		}
+		
 		/**
 		 * @param id_panier
 		 * @param prixTotal
 		 */
-		public Panier(long id_panier, Double prixTotal) {
+		public Panier(int id_panier, Double prixTotal) {
 			super();
 			this.id_panier = id_panier;
 			this.prixTotal = prixTotal;
 		}
+
 //-------------------------------------------------------------------------------------------------------------
 //------------------------------3_Les Getters et Setters-------------------------------------------------------
 	/**
 	 * 3_Les Getters et Setters
 	 */
+
+
 		/**
 		 * @return the id_panier
 		 */
-		public long getId_panier() {
+		public int getId_panier() {
 			return id_panier;
 		}
 		/**
 		 * @param id_panier the id_panier to set
 		 */
-		public void setId_panier(Long id_panier) {
+		public void setId_panier(int id_panier) {
 			this.id_panier = id_panier;
 		}
 		/**

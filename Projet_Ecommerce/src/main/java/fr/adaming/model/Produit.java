@@ -25,7 +25,7 @@ public class Produit implements Serializable{
 	 */
 		@Id
 		@GeneratedValue(strategy=GenerationType.IDENTITY)
-		private long id_produit;
+		private int id_produit;
 		
 		private String nom;
 		private String description;
@@ -65,7 +65,8 @@ public class Produit implements Serializable{
 			this.quantite = quantite;
 			this.selection = selection;
 		}
-		/**
+
+/**
 		 * @param id_produit
 		 * @param nom
 		 * @param description
@@ -73,7 +74,7 @@ public class Produit implements Serializable{
 		 * @param quantite
 		 * @param selection
 		 */
-		public Produit(long id_produit, String nom, String description, Double prix, int quantite, boolean selection) {
+		public Produit(int id_produit, String nom, String description, Double prix, int quantite, boolean selection) {
 			super();
 			this.id_produit = id_produit;
 			this.nom = nom;
@@ -82,21 +83,16 @@ public class Produit implements Serializable{
 			this.quantite = quantite;
 			this.selection = selection;
 		}
-//-------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------
 //------------------------------3_Les Getters et Setters-------------------------------------------------------
 	/**
 	 * 3_Les Getters et Setters
 	 */
-		/**
-		 * @return the id_produit
-		 */
-		public Long getId_produit() {
+
+		public int getId_produit() {
 			return id_produit;
 		}
-		/**
-		 * @param id_produit the id_produit to set
-		 */
-		public void setId_produit(Long id_produit) {
+		public void setId_produit(int id_produit) {
 			this.id_produit = id_produit;
 		}
 		/**

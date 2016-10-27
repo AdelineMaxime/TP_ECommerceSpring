@@ -13,7 +13,7 @@ import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
 
 @Repository
-@Transactional
+
 public class ProduitDaoImpl implements IProduitDao {
 
 	// Paramètres
@@ -30,7 +30,6 @@ public class ProduitDaoImpl implements IProduitDao {
 	// Méthodes
 	// -----------------------------------------------------------------------------------------------------------------
 	@Override
-	@Transactional
 	public void addProductDao(Produit produit) {
 
 		Session session = sf.getCurrentSession();
@@ -39,23 +38,30 @@ public class ProduitDaoImpl implements IProduitDao {
 	}
 
 	@Override
-	@Transactional
 	public void deleteProductDao(Produit produit) {
 
 		Session session = sf.getCurrentSession();
-		session.delete(produit);
+		String req = "DELETE FROM Produit p WHERE p.id_produit=:id";
+		Query query = session.createQuery(req);
+		query.setParameter("id", produit.getId_produit());
+		query.executeUpdate();
 	}
 
 	@Override
-	@Transactional
 	public void updateProductDao(Produit produit) {
 
 		Session session = sf.getCurrentSession();
-		session.saveOrUpdate(produit);
+		String req = "UPDATE Produit p SET p.nom=:nom, p.description=:descr, p.prix=:prix, p.quantite=:qte WHERE p.id_produit=:id";
+		Query query = session.createQuery(req);
+		query.setParameter("nom", produit.getNom());
+		query.setParameter("descr", produit.getDescription());
+		query.setParameter("prix", produit.getPrix());
+		query.setParameter("qte", produit.getQuantite());
+		query.setParameter("id", produit.getId_produit());
+		query.executeUpdate();
 	}
 
 	@Override
-	@Transactional(readOnly = true)
 	public List<Produit> getAllProductDao() {
 
 		Session session = sf.getCurrentSession();
@@ -67,7 +73,6 @@ public class ProduitDaoImpl implements IProduitDao {
 	}
 
 	@Override
-	@Transactional(readOnly = true)
 	public List<Produit> getProductByCatDao(Categorie categorie) {
 
 		Session session = sf.getCurrentSession();
@@ -81,7 +86,6 @@ public class ProduitDaoImpl implements IProduitDao {
 	}
 
 	@Override
-	@Transactional(readOnly = true)
 	public Produit getProductByNameDao(String name) {
 
 		Session session = sf.getCurrentSession();
