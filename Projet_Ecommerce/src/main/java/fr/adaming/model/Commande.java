@@ -24,7 +24,7 @@ public class Commande implements Serializable{
 	 */
 		@Id
 		@GeneratedValue(strategy=GenerationType.IDENTITY)
-		private long id_commande;
+		private int id_commande;
 		private Date date_commande;
 		
 		@OneToOne
@@ -48,10 +48,8 @@ public class Commande implements Serializable{
 		
 		/**
 		 * @param date_commande
-		 * @param panier
-		 * @param client
 		 */
-		public Commande(Date date_commande, Panier panier) {
+		public Commande(Date date_commande) {
 			super();
 			this.date_commande = date_commande;
 		}
@@ -59,31 +57,34 @@ public class Commande implements Serializable{
 		/**
 		 * @param id_commande
 		 * @param date_commande
-		 * @param panier
-		 * @param client
 		 */
-		public Commande(long id_commande, Date date_commande) {
+		public Commande(int id_commande, Date date_commande) {
 			super();
 			this.id_commande = id_commande;
 			this.date_commande = date_commande;
 		}
+		
+
 //-------------------------------------------------------------------------------------------------------------
 //------------------------------3_Les Getters et Setters-------------------------------------------------------
 	/**
 	 * 3_Les Getters et Setters
 	 */
+
 		/**
 		 * @return the id_commande
 		 */
-		public long getId_commande() {
+		public int getId_commande() {
 			return id_commande;
 		}
+
 		/**
 		 * @param id_commande the id_commande to set
 		 */
-		public void setId_commande(Long id_commande) {
+		public void setId_commande(int id_commande) {
 			this.id_commande = id_commande;
 		}
+
 		/**
 		 * @return the date_commande
 		 */

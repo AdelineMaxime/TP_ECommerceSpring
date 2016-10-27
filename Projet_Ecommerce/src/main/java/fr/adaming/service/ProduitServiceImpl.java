@@ -10,7 +10,11 @@ import fr.adaming.dao.IProduitDao;
 import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
 
+<<<<<<< HEAD
 @Service
+=======
+@Service("produitServiceBean")
+>>>>>>> branch 'master' of https://github.com/AdelineMaxime/TP_ECommerceSpring.git
 @Transactional
 public class ProduitServiceImpl implements IProduitService {
 
