@@ -1,12 +1,14 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,11 +29,21 @@ public class Gestionnaire implements Serializable{
 	@Column(name="id_g")
 	private int id_gestionnaire;
 	
+	@OneToMany(mappedBy="gestionnaire")
+	private List<Role> roles;
+	
+	
+	
 	/**
 	 * Définition des variables d'identification
 	 */
+	@Column(name="username")
 	private String login;
+	
+	@Column(name="password")
 	private String mdp;
+	
+	private boolean actived;
 	
 	/**
 	 * Constructeur Vide
@@ -103,6 +115,21 @@ public class Gestionnaire implements Serializable{
 	 */
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
+	}
+
+
+	/**
+	 * @return the roles
+	 */
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	/**
+	 * @param roles the roles to set
+	 */
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
 	/* (non-Javadoc)

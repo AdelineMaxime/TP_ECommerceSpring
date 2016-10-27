@@ -17,7 +17,7 @@ public class ClassTestProduit {
 		
 		IProduitService produitService = (IProduitService) cxt.getBean("produitServiceBean");
 		
-		Produit p1 = new Produit("a", "a", 1.00, 1, false);
+		//Produit p1 = new Produit("a", "a", 1.00, 1, false);
 		
 		//produitService.addProductService(p1);
 		
