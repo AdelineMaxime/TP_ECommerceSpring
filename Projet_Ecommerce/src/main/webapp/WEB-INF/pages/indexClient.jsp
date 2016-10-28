@@ -13,6 +13,7 @@
 
 ${title}
 
+
 	<div align="center">
 		<table align="center" width="80%" cellspacing="0" cellpadding="5">
 
