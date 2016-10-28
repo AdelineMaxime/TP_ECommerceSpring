@@ -48,5 +48,7 @@ ${title}
 			</tr>
 		</table>
 	</div>
+	
+	<a href="indexGest">Espace gestionnaire</a>
 </body>
 </html>
