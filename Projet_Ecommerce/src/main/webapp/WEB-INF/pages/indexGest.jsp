@@ -16,7 +16,8 @@
 
 <body>
 
-	${title}
+	<a href="${pageContext.request.contextPath}/gestion/addCat"
+		style="background-color: lightblue;"> Ajouter une categorie </a> ${title}
 
 	<div align="center">
 		<h1 style="background-color: lightgreen; color: darkgreen">Liste
@@ -38,8 +39,8 @@
 			</tr>
 			<c:forEach var="categorie" items="${listCategorie}">
 				<tr bgcolor="lightyellow">
-					<td><b>${categorie.id_categorie}</b></td>
-					<td>${categorie.nom}</td>
+					<td align="center"><b>${categorie.id_categorie}</b></td>
+					<td align="center">${categorie.nom}</td>
 				</tr>
 			</c:forEach>
 		</table>

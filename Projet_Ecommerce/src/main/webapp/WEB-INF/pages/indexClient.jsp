@@ -49,6 +49,6 @@ ${title}
 		</table>
 	</div>
 	
-	<a href="gestion/index">Espace gestionnaire</a>
+	<a href="${pageContext.request.contextPath}/gestion/index">Espace gestionnaire</a>
 </body>
 </html>
