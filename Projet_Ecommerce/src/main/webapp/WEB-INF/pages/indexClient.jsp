@@ -49,6 +49,6 @@ ${title}
 		</table>
 	</div>
 	
-	<a href="indexGest">Espace gestionnaire</a>
+	<a href="Projet_Ecommerce/gestion/index">Espace gestionnaire</a>
 </body>
 </html>
