@@ -19,15 +19,15 @@ public class GestionController {
 	ICategorieService categorieService;
 
 	
-	@RequestMapping(value="/index", method=RequestMethod.GET)
-	public String init(ModelMap model) {
-		
-		model.addAttribute("title", "Accueil gestionnaire");
-		
-		return "indexGest";
-	}
+//	@RequestMapping(value="/index", method=RequestMethod.GET)
+//	public String init(ModelMap model) {
+//		
+//		model.addAttribute("title", "Accueil gestionnaire");
+//		
+//		return "indexGest";
+//	}
 	
-	@RequestMapping(value="/listeCategorie", method=RequestMethod.GET)
+	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public String listCategorie(ModelMap model){
 		
 		List<Categorie> liste = categorieService.getAllCategorieService();
