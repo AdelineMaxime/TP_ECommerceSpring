@@ -15,41 +15,26 @@ public class ClassTestProduit {
 
 	public static void main(String[] args) {
 
-		ApplicationContext cxt = new FileSystemXmlApplicationContext("C:\\Users\\inti0288\\git\\TP_ECommerceSpring\\Projet_Ecommerce\\src\\main\\webapp\\WEB-INF\\application-context.xml");
-		
+		ApplicationContext cxt = new FileSystemXmlApplicationContext("C:\\Users\\inti0288\\git\\TP_ECommerceSpring\\ecom\\Projet_Ecommerce\\src\\main\\webapp\\WEB-INF\\application-context.xml");
+
 		IProduitService produitService = (IProduitService) cxt.getBean("produitServiceBean");
 		
-		Produit p1 = new Produit("a", "a", 1.00, 1, false);
-		
+//		Produit p1 = new Produit("a", "a", 1, 1, false);
+//		
 //		produitService.addProductService(p1);
 //		
 //		System.out.println(p1);
-//	
-//		System.out.println(produitService.getProductByNameService("a"));
-//		Produit p2=produitService.getProductByNameService("a");
+		
+//		Produit p2 = produitService.getProductByNameService("a");
+//		System.out.println(p2);
+//		
 //		produitService.deleteProductService(p2);
-//		
-//		Produit p2 = new Produit(2, "b", "b", 1.00, 1, false);
-//		
-//		produitService.updateProductService(p2);
-//		
-//		List<Produit> liste = produitService.getAllProductService();
-//		
-//		System.out.println(liste);
 		
-//		ILigneCommService ligneCommService = (ILigneCommService) cxt.getBean("ligneCommServiceBean");
+//		System.out.println(produitService.getAllProductService());
+		
+//		Produit p3 = new Produit(2, "b", "b", 1, 1, false);
 //		
-//		LigneCommande lc1 = new LigneCommande(2, p1);
-//		System.out.println(lc1);
-//		
-//		ligneCommService.addLigneCommService(lc1);
-		
-
-		List<Produit> liste = produitService.getAllSelectedProduct();
-		
-		System.out.println(liste);
-		
+//		produitService.updateProductService(p3);
 		
 	}
-
 }

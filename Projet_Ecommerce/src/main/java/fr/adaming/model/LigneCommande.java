@@ -31,9 +31,9 @@ public class LigneCommande implements Serializable {
 	private int quantite;
 	private Double prix;
 
-	@OneToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name = "produit_nom", referencedColumnName = "nom")
-	private Produit produit;
+//	@OneToOne(cascade=CascadeType.PERSIST)
+//	@JoinColumn(name = "produit_nom", referencedColumnName = "nom")
+//	private Produit produit;
 
 	// @ManyToOne
 	// @JoinColumn(name = "panier_id", referencedColumnName = "id_panier")
@@ -68,7 +68,6 @@ public class LigneCommande implements Serializable {
 	public LigneCommande(int quantite, Produit produit) {
 		super();
 		this.quantite = quantite;
-		this.produit = produit;
 		this.prix = produit.getPrix() * quantite;
 	}
 
@@ -83,7 +82,6 @@ public class LigneCommande implements Serializable {
 		this.id_LC = id_LC;
 		this.quantite = quantite;
 		this.prix = prix;
-		this.produit = produit;
 	}
 
 	// -------------------------------------------------------------------------------------------------------------
@@ -122,20 +120,7 @@ public class LigneCommande implements Serializable {
 		this.prix = prix;
 	}
 
-	/**
-	 * @return the produit
-	 */
-	public Produit getProduit() {
-		return produit;
-	}
 
-	/**
-	 * @param produit
-	 *            the produit to set
-	 */
-	public void setProduit(Produit produit) {
-		this.produit = produit;
-	}
 
 	// /**
 	// * @return the panier
@@ -179,8 +164,7 @@ public class LigneCommande implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "LigneCommande [id_LC=" + id_LC + ", quantite=" + quantite + ", prix=" + prix + ", produit=" + produit
-				+ "]";
+		return "LigneCommande [id_LC=" + id_LC + ", quantite=" + quantite + ", prix=" + prix + "]";
 	}
 	// -------------------------------------------------------------------------------------------------------------
 }

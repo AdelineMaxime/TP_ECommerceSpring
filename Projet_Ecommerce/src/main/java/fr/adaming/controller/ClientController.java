@@ -30,14 +30,6 @@ public class ClientController {
 		return "indexClient";
 	}
 	
-	
-	@RequestMapping(value="/panier", method=RequestMethod.GET)
-	public String displayPanier(ModelMap model) {
-		
-		List<Produit> liste = produitService.getAllSelectedProduct();
-		model.addAttribute("lignesComm", liste);
-		
-		return "panier";
-	}
+
 	
 }

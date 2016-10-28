@@ -31,10 +31,11 @@ ${title}
 							<th>Prix</th>
 							<th>Quantité</th>
 							<th>Catégorie</th>
+							<th>Acheter</th>
 						</tr>
 						<c:forEach var="produit" items="${produitList}">
 							<tr bgcolor="lightyellow">
-								<td><b>${produit.id}</b></td>
+								<td><b>${produit.id_produit}</b></td>
 								<td>${produit.nom}</td>
 								<td>${produit.description}</td>
 								<td>${produit.prix}</td>

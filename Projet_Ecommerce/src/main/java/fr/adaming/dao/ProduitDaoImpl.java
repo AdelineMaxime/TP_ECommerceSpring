@@ -15,50 +15,33 @@ import fr.adaming.model.Produit;
 @Repository
 public class ProduitDaoImpl implements IProduitDao {
 
-	// Paramètres
-	// -------------------------------------------------------------------------------------------------------------
 	@Autowired
 	private SessionFactory sf;
-
-	// Setter
-	// -------------------------------------------------------------------------------------------------------------------
-	public void setSf(SessionFactory sf) {
-		this.sf = sf;
-	}
-
-	// Méthodes
-	// -----------------------------------------------------------------------------------------------------------------
+	
+	
 	@Override
 	public void addProductDao(Produit produit) {
 
 		Session session = sf.getCurrentSession();
 		session.save(produit);
-
+		
 	}
+
 
 	@Override
-	public void deleteProductDao(Produit produit) {
+	public Produit getProductByNameDao(String name) {
 
 		Session session = sf.getCurrentSession();
-		String req = "DELETE FROM Produit p WHERE p.id_produit=:id";
+		String req = "SELECT p FROM Produit p WHERE p.nom=:nom";
 		Query query = session.createQuery(req);
-		query.setParameter("id", produit.getId_produit());
-		query.executeUpdate();
+		query.setParameter("nom", name);
+		
+	
+		
+		return (Produit) query.uniqueResult();
+		
 	}
 
-	@Override
-	public void updateProductDao(Produit produit) {
-
-		Session session = sf.getCurrentSession();
-		String req = "UPDATE Produit p SET p.nom=:nom, p.description=:descr, p.prix=:prix, p.quantite=:qte WHERE p.id_produit=:id";
-		Query query = session.createQuery(req);
-		query.setParameter("nom", produit.getNom());
-		query.setParameter("descr", produit.getDescription());
-		query.setParameter("prix", produit.getPrix());
-		query.setParameter("qte", produit.getQuantite());
-		query.setParameter("id", produit.getId_produit());
-		query.executeUpdate();
-	}
 
 	@Override
 	public List<Produit> getAllProductDao() {
@@ -66,59 +49,57 @@ public class ProduitDaoImpl implements IProduitDao {
 		Session session = sf.getCurrentSession();
 		String req = "FROM Produit";
 		Query query = session.createQuery(req);
-		List<Produit> liste = query.list();
-
-		return liste;
+		
+		return query.list();
 	}
 
+
 	@Override
-	public List<Produit> getProductByCatDao(Categorie categorie) {
+	public void deleteProductDao(Produit produit) {
 
-		Session session = sf.getCurrentSession();
-		String req = "SELECT p FROM Produit p WHERE p.categorie.id_categorie=:id_cat";
-		Query query = session.createQuery(req);
-		query.setParameter("id_cat", categorie.getId_categorie());
-
-		List<Produit> liste = query.list();
-
-		return liste;
+		Session session =sf.getCurrentSession();
+		Produit p = (Produit) session.get(Produit.class, produit.getId_produit());
+		session.delete(p);
+		
 	}
 
-	@Override
-	public Produit getProductByNameDao(String name) {
-
-		Session session = sf.getCurrentSession();
-		String req = "SELECT p FROM Produit p WHERE p.nom=:nom_prod";
-		Query query = session.createQuery(req);
-		query.setParameter("nom_prod", name);
-
-		List<Produit> liste = query.list();
-		Produit prod = liste.get(0);
-
-		return prod;
-	}
 
 	@Override
-	public void selectProductDao(Produit produit) {
+	public void updateProductDao(Produit produit) {
 
 		Session session = sf.getCurrentSession();
-		String req = "UPDATE Produit p SET p.selection=true WHERE p.id_produit=:id";
+		String req = "UPDATE Produit p SET p.nom=:nom, p.description=:descr, p.prix=:prix, p.quantite=:qte WHERE p.id_product=:id";
 		Query query = session.createQuery(req);
+		query.setParameter("nom", produit.getNom());
+		query.setParameter("descr", produit.getDescription());
+		query.setParameter("prix", produit.getPrix());
+		query.setParameter("qte", produit.getQuantite());
 		query.setParameter("id", produit.getId_produit());
 		
 		query.executeUpdate();
-			
+		
 	}
+
 
 	@Override
-	public List<Produit> getAllSelectedProduct() {
-
-		Session session = sf.getCurrentSession();
-		String req = "SELECT * FROM produit WHERE selection=1";
-		Query query = session.createSQLQuery(req);
-		List<Produit> liste = query.list();
-		
-		return liste;
+	public List<Produit> getProductByCatDao(Categorie categorie) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+
+	@Override
+	public void selectProductDao(Produit produit) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public List<Produit> getAllSelectedProductDao() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

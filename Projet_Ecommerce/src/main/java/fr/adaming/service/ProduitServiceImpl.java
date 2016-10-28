@@ -16,38 +16,16 @@ public class ProduitServiceImpl implements IProduitService {
 
 	
 	@Autowired
-	IProduitDao produitDao;
+	private IProduitDao produitDao;
 	
 	
 	@Override
 	public void addProductService(Produit produit) {
 
 		produitDao.addProductDao(produit);
+		
 	}
 
-	@Override
-	public void deleteProductService(Produit produit) {
-
-		produitDao.deleteProductDao(produit);
-	}
-
-	@Override
-	public void updateProductService(Produit produit) {
-
-		produitDao.updateProductDao(produit);
-	}
-
-	@Override
-	public List<Produit> getAllProductService() {
-
-		return produitDao.getAllProductDao();
-	}
-
-	@Override
-	public List<Produit> getProductByCatService(Categorie categorie) {
-
-		return produitDao.getProductByCatDao(categorie);
-	}
 
 	@Override
 	public Produit getProductByNameService(String name) {
@@ -55,16 +33,48 @@ public class ProduitServiceImpl implements IProduitService {
 		return produitDao.getProductByNameDao(name);
 	}
 
-	@Override
-	public void selectProductDao(Produit produit) {
-
-		produitDao.selectProductDao(produit);
-	}
 
 	@Override
-	public List<Produit> getAllSelectedProduct() {
+	public List<Produit> getAllProductService() {
 
-		return produitDao.getAllSelectedProduct();
+		return produitDao.getAllProductDao();
 	}
+
+
+	@Override
+	public void deleteProductService(Produit produit) {
+	
+		produitDao.deleteProductDao(produit);
+	}
+
+
+	@Override
+	public void updateProductService(Produit produit) {
+
+		produitDao.updateProductDao(produit);
+	}
+
+
+	@Override
+	public List<Produit> getProductByCatService(Categorie categorie) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void selectProductService(Produit produit) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public List<Produit> getAllSelectedProductService() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }
