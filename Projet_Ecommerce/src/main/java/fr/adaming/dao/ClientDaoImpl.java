@@ -32,9 +32,7 @@ public class ClientDaoImpl implements IClientDao {
 		query.setParameter("nom", nom);
 		query.setParameter("mdp", password);
 		
-		query.list();
-		
-		return 0;
+		return query.list().size();
 	}
 
 }

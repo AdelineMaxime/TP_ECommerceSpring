@@ -13,5 +13,6 @@ public interface IProduitService {
 	public List<Produit> getAllProductService();
 	public List<Produit> getProductByCatService(Categorie categorie);
 	public Produit getProductByNameService(String name);
-	
+	public void selectProductDao(Produit produit);
+	public List<Produit> getAllSelectedProduct();
 }

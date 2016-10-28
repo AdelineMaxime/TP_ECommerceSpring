@@ -2,6 +2,7 @@ package fr.adaming.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -30,13 +31,13 @@ public class LigneCommande implements Serializable {
 	private int quantite;
 	private Double prix;
 
-	@OneToOne
-	@JoinColumn(name = "produit_id", referencedColumnName = "id_produit")
+	@OneToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name = "produit_nom", referencedColumnName = "nom")
 	private Produit produit;
 
-	@ManyToOne
-	@JoinColumn(name = "panier_id", referencedColumnName = "id_panier")
-	private Panier panier;
+	// @ManyToOne
+	// @JoinColumn(name = "panier_id", referencedColumnName = "id_panier")
+	// private Panier panier;
 
 	// -------------------------------------------------------------------------------------------------------------
 	// ------------------------------2_Les
@@ -53,12 +54,36 @@ public class LigneCommande implements Serializable {
 
 	/**
 	 * @param quantite
-	 * @param prix
 	 */
-	public LigneCommande(int quantite, Double prix) {
+	public LigneCommande(int quantite) {
 		super();
 		this.quantite = quantite;
+	}
+
+	/**
+	 * @param quantite
+	 * @param prix
+	 * @param produit
+	 */
+	public LigneCommande(int quantite, Produit produit) {
+		super();
+		this.quantite = quantite;
+		this.produit = produit;
+		this.prix = produit.getPrix() * quantite;
+	}
+
+	/**
+	 * @param id_LC
+	 * @param quantite
+	 * @param prix
+	 * @param produit
+	 */
+	public LigneCommande(int id_LC, int quantite, Double prix, Produit produit) {
+		super();
+		this.id_LC = id_LC;
+		this.quantite = quantite;
 		this.prix = prix;
+		this.produit = produit;
 	}
 
 	// -------------------------------------------------------------------------------------------------------------
@@ -112,20 +137,20 @@ public class LigneCommande implements Serializable {
 		this.produit = produit;
 	}
 
-	/**
-	 * @return the panier
-	 */
-	public Panier getPanier() {
-		return panier;
-	}
-
-	/**
-	 * @param panier
-	 *            the panier to set
-	 */
-	public void setPanier(Panier panier) {
-		this.panier = panier;
-	}
+	// /**
+	// * @return the panier
+	// */
+	// public Panier getPanier() {
+	// return panier;
+	// }
+	//
+	// /**
+	// * @param panier
+	// * the panier to set
+	// */
+	// public void setPanier(Panier panier) {
+	// this.panier = panier;
+	// }
 
 	/**
 	 * @return the id_LC
@@ -154,7 +179,8 @@ public class LigneCommande implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "LigneCommande [quantite=" + quantite + ", prix=" + prix + "]";
+		return "LigneCommande [id_LC=" + id_LC + ", quantite=" + quantite + ", prix=" + prix + ", produit=" + produit
+				+ "]";
 	}
 	// -------------------------------------------------------------------------------------------------------------
 }

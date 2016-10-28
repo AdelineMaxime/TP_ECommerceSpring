@@ -55,4 +55,16 @@ public class ProduitServiceImpl implements IProduitService {
 		return produitDao.getProductByNameDao(name);
 	}
 
+	@Override
+	public void selectProductDao(Produit produit) {
+
+		produitDao.selectProductDao(produit);
+	}
+
+	@Override
+	public List<Produit> getAllSelectedProduct() {
+
+		return produitDao.getAllSelectedProduct();
+	}
+
 }

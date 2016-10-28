@@ -13,6 +13,7 @@ public interface IProduitDao {
 	public List<Produit> getAllProductDao();
 	public List<Produit> getProductByCatDao(Categorie categorie);
 	public Produit getProductByNameDao(String name);
-	
+	public void selectProductDao(Produit produit);
+	public List<Produit> getAllSelectedProduct();
 	
 }

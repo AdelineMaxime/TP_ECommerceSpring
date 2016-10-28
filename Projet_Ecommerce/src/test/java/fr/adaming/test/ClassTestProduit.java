@@ -6,7 +6,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
+import fr.adaming.model.LigneCommande;
 import fr.adaming.model.Produit;
+import fr.adaming.service.ILigneCommService;
 import fr.adaming.service.IProduitService;
 
 public class ClassTestProduit {
@@ -17,21 +19,33 @@ public class ClassTestProduit {
 		
 		IProduitService produitService = (IProduitService) cxt.getBean("produitServiceBean");
 		
-		//Produit p1 = new Produit("a", "a", 1.00, 1, false);
+		Produit p1 = new Produit("a", "a", 1.00, 1, false);
 		
-		//produitService.addProductService(p1);
-		
-		//System.out.println(p1);
-	
-		//System.out.println(produitService.getProductByNameService("a"));
-		//Produit p2=produitService.getProductByNameService("a");
-		//produitService.deleteProductService(p2);
-		
+//		produitService.addProductService(p1);
+//		
+//		System.out.println(p1);
+//	
+//		System.out.println(produitService.getProductByNameService("a"));
+//		Produit p2=produitService.getProductByNameService("a");
+//		produitService.deleteProductService(p2);
+//		
 //		Produit p2 = new Produit(2, "b", "b", 1.00, 1, false);
 //		
 //		produitService.updateProductService(p2);
+//		
+//		List<Produit> liste = produitService.getAllProductService();
+//		
+//		System.out.println(liste);
 		
-		List<Produit> liste = produitService.getAllProductService();
+//		ILigneCommService ligneCommService = (ILigneCommService) cxt.getBean("ligneCommServiceBean");
+//		
+//		LigneCommande lc1 = new LigneCommande(2, p1);
+//		System.out.println(lc1);
+//		
+//		ligneCommService.addLigneCommService(lc1);
+		
+
+		List<Produit> liste = produitService.getAllSelectedProduct();
 		
 		System.out.println(liste);
 		

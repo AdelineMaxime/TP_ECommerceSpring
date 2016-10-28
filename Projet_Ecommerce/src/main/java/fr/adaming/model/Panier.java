@@ -35,11 +35,11 @@ public class Panier implements Serializable{
 		@JoinColumn(name="client_id",referencedColumnName="id_client")
 		private Client clientP;
 		
-		@OneToMany(mappedBy="panier")
-		private List<LigneCommande> listeLC;
-		
-		@OneToOne(mappedBy="panier")
-		private Commande cmd;
+//		@OneToMany(mappedBy="panier")
+//		private List<LigneCommande> listeLC;
+//		
+//		@OneToOne(mappedBy="panier")
+//		private Commande cmd;
 //-------------------------------------------------------------------------------------------------------------
 //------------------------------2_Les constructeurs------------------------------------------------------------	
 	/**
@@ -112,30 +112,30 @@ public class Panier implements Serializable{
 		public void setClientP(Client client) {
 			this.clientP = client;
 		}
-		/**
-		 * @return the listeLC
-		 */
-		public List<LigneCommande> getListeLC() {
-			return listeLC;
-		}
-		/**
-		 * @param listeLC the listeLC to set
-		 */
-		public void setListeLC(List<LigneCommande> listeLC) {
-			this.listeLC = listeLC;
-		}
-		/**
-		 * @return the cmd
-		 */
-		public Commande getCmd() {
-			return cmd;
-		}
-		/**
-		 * @param cmd the cmd to set
-		 */
-		public void setCmd(Commande cmd) {
-			this.cmd = cmd;
-		}
+//		/**
+//		 * @return the listeLC
+//		 */
+//		public List<LigneCommande> getListeLC() {
+//			return listeLC;
+//		}
+//		/**
+//		 * @param listeLC the listeLC to set
+//		 */
+//		public void setListeLC(List<LigneCommande> listeLC) {
+//			this.listeLC = listeLC;
+//		}
+//		/**
+//		 * @return the cmd
+//		 */
+//		public Commande getCmd() {
+//			return cmd;
+//		}
+//		/**
+//		 * @param cmd the cmd to set
+//		 */
+//		public void setCmd(Commande cmd) {
+//			this.cmd = cmd;
+//		}
 //-------------------------------------------------------------------------------------------------------------
 //------------------------------4_Méthodes---------------------------------------------------------------------
 	/**

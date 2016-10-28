@@ -8,7 +8,5 @@
 </head>
 <body>
 
-<% response.sendRedirect("client/index"); %>
-
 </body>
 </html>

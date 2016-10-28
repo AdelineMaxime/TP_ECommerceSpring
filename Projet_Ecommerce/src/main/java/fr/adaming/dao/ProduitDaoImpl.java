@@ -98,4 +98,27 @@ public class ProduitDaoImpl implements IProduitDao {
 		return prod;
 	}
 
+	@Override
+	public void selectProductDao(Produit produit) {
+
+		Session session = sf.getCurrentSession();
+		String req = "UPDATE Produit p SET p.selection=true WHERE p.id_produit=:id";
+		Query query = session.createQuery(req);
+		query.setParameter("id", produit.getId_produit());
+		
+		query.executeUpdate();
+			
+	}
+
+	@Override
+	public List<Produit> getAllSelectedProduct() {
+
+		Session session = sf.getCurrentSession();
+		String req = "SELECT * FROM produit WHERE selection=1";
+		Query query = session.createSQLQuery(req);
+		List<Produit> liste = query.list();
+		
+		return liste;
+	}
+
 }
