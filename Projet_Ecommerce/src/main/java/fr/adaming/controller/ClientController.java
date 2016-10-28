@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import fr.adaming.model.Produit;
+import fr.adaming.service.IClientService;
 import fr.adaming.service.IProduitService;
 
 @Controller
@@ -18,6 +19,10 @@ public class ClientController {
 	
 	@Autowired
 	private IProduitService produitService;
+	
+	
+	@Autowired
+	private IClientService clientService;
 	
 	
 	@RequestMapping(value="/index", method=RequestMethod.GET)

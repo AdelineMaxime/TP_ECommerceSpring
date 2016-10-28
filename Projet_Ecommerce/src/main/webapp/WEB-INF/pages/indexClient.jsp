@@ -40,7 +40,7 @@ ${title}
 								<td>${produit.description}</td>
 								<td>${produit.prix}</td>
 								<td>${produit.quantite}</td>
-								<td>${produit.categorie}</td>
+								<td>${produit.categorie.nom}</td>
 								<td>Ajouter au panier</td>
 							</tr>
 						</c:forEach>
