@@ -12,7 +12,7 @@ public interface IProduitService {
 	public List<Produit> getAllProductService();
 	public void deleteProductService(Produit produit);
 	public void updateProductService(Produit produit);
-	public List<Produit> getProductByCatService(Categorie categorie);
+	public List<Produit> getProductByCatService(int id);
 	public void selectProductService(Produit produit);
 	public List<Produit> getAllSelectedProductService();
 	

@@ -36,5 +36,10 @@ public class ClassTestProduit {
 //		
 //		produitService.updateProductService(p3);
 		
+		List<Produit> liste1 = produitService.getProductByCatService(1);
+		System.out.println(liste1);
+		System.out.println("-----------------------------");
+		
+		
 	}
 }

@@ -31,9 +31,9 @@ public class LigneCommande implements Serializable {
 	private int quantite;
 	private Double prix;
 
-//	@OneToOne(cascade=CascadeType.PERSIST)
-//	@JoinColumn(name = "produit_nom", referencedColumnName = "nom")
-//	private Produit produit;
+	@OneToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name = "produit_nom", referencedColumnName = "nom")
+	private Produit produit;
 
 	// @ManyToOne
 	// @JoinColumn(name = "panier_id", referencedColumnName = "id_panier")
@@ -150,6 +150,21 @@ public class LigneCommande implements Serializable {
 	 */
 	public void setId_LC(int id_LC) {
 		this.id_LC = id_LC;
+	}
+		
+
+	/**
+	 * @return the produit
+	 */
+	public Produit getProduit() {
+		return produit;
+	}
+
+	/**
+	 * @param produit the produit to set
+	 */
+	public void setProduit(Produit produit) {
+		this.produit = produit;
 	}
 
 	// -------------------------------------------------------------------------------------------------------------

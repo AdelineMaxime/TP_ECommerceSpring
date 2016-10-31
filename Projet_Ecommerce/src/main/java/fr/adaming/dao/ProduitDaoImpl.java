@@ -81,16 +81,13 @@ public class ProduitDaoImpl implements IProduitDao {
 	}
 
 
-	@Override
-	public List<Produit> getProductByCatDao(Categorie categorie) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 
 	@Override
 	public void selectProductDao(Produit produit) {
-		// TODO Auto-generated method stub
+
+		produit.setSelection(true);
 		
 	}
 
@@ -99,6 +96,20 @@ public class ProduitDaoImpl implements IProduitDao {
 	public List<Produit> getAllSelectedProductDao() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public List<Produit> getProductByCatDao(int id) {
+
+		Session session = sf.getCurrentSession();
+		String req = "SELECT p FROM Produit p WHERE p.categorie.id_categorie=:id";
+		Query query = session.createQuery(req);
+		query.setParameter("id", id);
+		
+		List<Produit> liste = query.list();
+		
+		return liste;
 	}
 
 

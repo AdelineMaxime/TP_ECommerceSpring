@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,20 +17,24 @@
 						<tr>
 							<td colspan="7"
 								style="background-color: lightblue; color: darkgreen; font-size: 16pt"
-								align="center">Panier</td>
+								align="center">Liste Des Produits</td>
 						</tr>
 						<tr bgcolor="grey" style="color: white">
-							<th>Produit</th>
-							<th>Quantité</th>
+							<th>No</th>
+							<th>Nom</th>
+							<th>Description</th>
 							<th>Prix</th>
-							<th>Supprimer</th>
+							<th>Quantité</th>
+							<th>Acheter</th>
 						</tr>
-						<c:forEach var="lc" items="${panierList}">
+						<c:forEach var="produit" items="${listeProdCat}">
 							<tr bgcolor="lightyellow">
-								<td><b>${lc.produit.nom}</b></td>
-								<td>${lc.quantite}</td>
-								<td>${lc.prix}</td>
-								<td>Retirer du panier</td>
+								<td><b>${produit.id_produit}</b></td>
+								<td>${produit.nom}</td>
+								<td>${produit.description}</td>
+								<td>${produit.prix}</td>
+								<td>${produit.quantite}</td>
+								<td>Ajouter au panier</td>
 							</tr>
 						</c:forEach>
 					</table>

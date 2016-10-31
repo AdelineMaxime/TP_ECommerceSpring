@@ -56,16 +56,16 @@ public class ProduitServiceImpl implements IProduitService {
 
 
 	@Override
-	public List<Produit> getProductByCatService(Categorie categorie) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Produit> getProductByCatService(int id) {
+
+		return produitDao.getProductByCatDao(id);
 	}
 
 
 	@Override
 	public void selectProductService(Produit produit) {
-		// TODO Auto-generated method stub
-		
+
+		produitDao.selectProductDao(produit);
 	}
 
 

@@ -11,7 +11,37 @@
 </head>
 <body>
 
-${title}
+	<div align="center">
+		<h1 style="background-color: lightgreen; color: darkgreen">${title}</h1>
+	</div>
+
+	<a href="${pageContext.request.contextPath}/client/panier">Aller au panier</a>
+
+	<div align="center">
+		<table cellspacing="0" cellpadding="6" border="1" width="100%">
+			<tr>
+				<td colspan="7"
+					style="background-color: lightblue; color: darkgreen; font-size: 16pt"
+					align="center">Liste Des Categories</td>
+			</tr>
+			<tr bgcolor="grey" style="color: white">
+
+				<th>No</th>
+				<th>Nom</th>
+				<th>Produits associés</th>
+			</tr>
+			<c:forEach var="categorie" items="${categorieList}">
+				<tr bgcolor="lightyellow">
+					<td align="center"><b>${categorie.id_categorie}</b></td>
+					<td align="center">${categorie.nom}</td>
+					<td><a
+						href="${pageContext.request.contextPath}/client/listeProd/${categorie.id_categorie}">Voir
+							les produits</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
+
 
 	<div align="center">
 		<table align="center" width="80%" cellspacing="0" cellpadding="5">
@@ -41,7 +71,9 @@ ${title}
 								<td>${produit.prix}</td>
 								<td>${produit.quantite}</td>
 								<td>${produit.categorie.nom}</td>
-								<td>Ajouter au panier</td>
+								<td><a
+									href="${pageContext.request.contextPath}/client/addPanier/${produit.nom}">Ajouter
+										au panier</a></td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -49,7 +81,8 @@ ${title}
 			</tr>
 		</table>
 	</div>
-	
-	<a href="${pageContext.request.contextPath}/gestion/index">Espace gestionnaire</a>
+
+	<a href="${pageContext.request.contextPath}/gestion/index">Espace
+		gestionnaire</a>
 </body>
 </html>

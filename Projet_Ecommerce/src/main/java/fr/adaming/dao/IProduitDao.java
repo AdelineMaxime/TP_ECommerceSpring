@@ -12,7 +12,7 @@ public interface IProduitDao {
 	public List<Produit> getAllProductDao();
 	public void deleteProductDao(Produit produit);
 	public void updateProductDao(Produit produit);
-	public List<Produit> getProductByCatDao(Categorie categorie);
+	public List<Produit> getProductByCatDao(int id);
 	public void selectProductDao(Produit produit);
 	public List<Produit> getAllSelectedProductDao();
 
