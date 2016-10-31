@@ -167,19 +167,20 @@ public class LigneCommande implements Serializable {
 		this.produit = produit;
 	}
 
+
+
 	// -------------------------------------------------------------------------------------------------------------
 	// ------------------------------4_Méthodes---------------------------------------------------------------------
 	/**
 	 * 4_Méthodes
 	 */
-	/*
-	 * (non-Javadoc)
-	 * 
+
+	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "LigneCommande [id_LC=" + id_LC + ", quantite=" + quantite + ", prix=" + prix + "]";
+		return "LigneCommande [quantite=" + quantite + ", prix=" + prix + ", produit=" + produit
+				+ "]";
 	}
-	// -------------------------------------------------------------------------------------------------------------
 }

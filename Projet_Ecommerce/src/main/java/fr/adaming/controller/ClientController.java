@@ -54,7 +54,7 @@ public class ClientController {
 		List<Categorie> listeCat = categorieService.getAllCategorieService();
 		model.addAttribute("title", "Accueil client");
 		model.addAttribute("produitList", listeProd);
-		model.addAttribute("categorieList", listeCat);
+		model.addAttribute("categorieList", listeCat);		
 		
 		return "indexClient";
 	}
@@ -64,6 +64,7 @@ public class ClientController {
 	public String getProduitsByIdCategorie(@PathVariable("id_cat") int idCat, ModelMap model) {
 		List<Produit> liste = produitService.getProductByCatService(idCat);
 		model.addAttribute("listeProdCat", liste);
+		
 		return "listeProduitParCat";
 	}
 
@@ -130,7 +131,7 @@ public class ClientController {
 		
 		model.addAttribute("panierList", lcList);
 		model.addAttribute("prix", panier.getPrixTotal());
-		
+				
 		return "panier";
 	}
 	
