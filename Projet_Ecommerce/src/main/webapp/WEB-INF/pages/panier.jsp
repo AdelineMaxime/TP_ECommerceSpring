@@ -48,9 +48,6 @@
 	<h3 align="center">Prix total : ${prix} </h1>
 	
 	<br/><br/>
-	<a href="${pageContext.request.contextPath}/client/creerClient">Créer un compte client</a>
-	
-	<br/><br/>
 	<a href="${pageContext.request.contextPath}/client/connexion">Poursuivre la commande</a>
 
 

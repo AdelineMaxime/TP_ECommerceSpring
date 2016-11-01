@@ -29,7 +29,7 @@ public class Panier implements Serializable{
 		@GeneratedValue(strategy=GenerationType.IDENTITY)
 		private int id_panier;
 		
-		private Double prixTotal;
+		private double prixTotal;
 		
 		@OneToOne(cascade=CascadeType.PERSIST)
 		@JoinColumn(name="client_id",referencedColumnName="id_client")

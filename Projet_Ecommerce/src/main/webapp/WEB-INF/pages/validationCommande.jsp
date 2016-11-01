@@ -44,6 +44,8 @@ Voici le récapitulatif de votre commande</h2>
 	</div>
 	
 	<h3 align="center">Prix total : ${prix} </h1>
+	
+	<a href="${pageContext.request.contextPath}/client/final">Valider la commande</a>
 
 </body>
 </html>

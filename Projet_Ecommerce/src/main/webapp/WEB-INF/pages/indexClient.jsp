@@ -12,10 +12,15 @@
 <body>
 
 	<div align="center">
+		<h3>${message}</h3>
+	</div>
+
+	<div align="center">
 		<h1 style="background-color: lightgreen; color: darkgreen">${title}</h1>
 	</div>
 
-	<a href="${pageContext.request.contextPath}/client/panier">Aller au panier</a>
+	<a href="${pageContext.request.contextPath}/client/panier">Aller au
+		panier</a>
 
 	<div align="center">
 		<table cellspacing="0" cellpadding="6" border="1" width="100%">

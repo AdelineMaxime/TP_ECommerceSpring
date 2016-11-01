@@ -13,7 +13,7 @@
 
 	<h1 align="center">Se connecter</h1>
 	
-	<h2 align="center">${message}</h2>
+	<h3 align="center" style="color: red">${message}</h3>
 
 	<form:form method="post" action="connecterClient"
 		modelAttribute="client">
@@ -35,6 +35,8 @@
 		</table>
 	</form:form>
 
+	<br/><br/>
+	<a href="${pageContext.request.contextPath}/client/creerClient">Créer un compte client</a>
 
 </body>
 </html>
