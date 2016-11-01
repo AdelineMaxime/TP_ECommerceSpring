@@ -3,6 +3,7 @@ package fr.adaming.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -29,7 +30,7 @@ public class Categorie implements Serializable {
 		
 		private String nom;
 		
-		@OneToMany(mappedBy="categorie", fetch = FetchType.EAGER)
+		@OneToMany(mappedBy="categorie", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 		private List<Produit> listeProduit;
 //-------------------------------------------------------------------------------------------------------------
 //------------------------------2_Les constructeurs------------------------------------------------------------	
