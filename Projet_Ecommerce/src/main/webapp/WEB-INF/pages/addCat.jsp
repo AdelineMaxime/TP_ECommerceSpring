@@ -30,7 +30,7 @@
 		</table>
 	</form:form>	
 	
-	<a href="${pageContext.request.contextPath}/gestion/index">Retour</a>
+	<a href="${pageContext.request.contextPath}/gestion/index">Retour à l'accueil Gestionnaire</a>
 
 </body>
 </html>

@@ -56,10 +56,13 @@ public class ProduitDaoImpl implements IProduitDao {
 
 	@Override
 	public void deleteProductDao(Produit produit) {
-
-		Session session =sf.getCurrentSession();
-		Produit p = (Produit) session.get(Produit.class, produit.getId_produit());
-		session.delete(p);
+		
+		Session session = sf.getCurrentSession();
+		
+		String req="Delete from Produit p where p.id_produit=:id";
+		Query query=session.createQuery(req);
+		query.setParameter("id", produit.getId_produit());
+		query.executeUpdate();
 		
 	}
 

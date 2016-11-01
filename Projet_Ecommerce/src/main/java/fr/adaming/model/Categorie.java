@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class Categorie implements Serializable {
 		
 		private String nom;
 		
-		@OneToMany(mappedBy="categorie")
+		@OneToMany(mappedBy="categorie", fetch = FetchType.EAGER)
 		private List<Produit> listeProduit;
 //-------------------------------------------------------------------------------------------------------------
 //------------------------------2_Les constructeurs------------------------------------------------------------	

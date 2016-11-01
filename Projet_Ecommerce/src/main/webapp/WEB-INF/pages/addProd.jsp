@@ -38,7 +38,7 @@
 				<td><form:input path="quantite" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="categorie.id_categorie">Categorie:</form:label></td>
+				<td><form:label path="categorie.id_categorie">ID Categorie:</form:label></td>
 				<td><form:input path="categorie.id_categorie" /></td>
 			</tr>
 
@@ -48,10 +48,10 @@
 			</tr>
 
 		</table>
-	</form:form>
+	</form:form>	
 	
 	
-	<a href="${pageContext.request.contextPath}/gestion/index">Retour</a>
+	<a href="${pageContext.request.contextPath}/gestion/index">Retour à l'accueil Gestionnaire</a>
 
 </body>
 </html>
