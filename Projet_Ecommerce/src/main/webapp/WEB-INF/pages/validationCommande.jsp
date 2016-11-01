@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+    pageEncoding="ISO-8859-1"%>
+    
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Panier</title>
+<title>Insert title here</title>
 </head>
 <body>
 
-<a href="${pageContext.request.contextPath}/client/index">Accueil</a>
-
+<h2 align="center">Bonjour ${nomClient}<br/>
+Voici le récapitulatif de votre commande</h2>
 
 	<div align="center">
 		<table align="center" width="80%" cellspacing="0" cellpadding="5">
@@ -29,14 +29,12 @@
 							<th>Produit</th>
 							<th>Quantité</th>
 							<th>Prix</th>
-							<th>Supprimer</th>
 						</tr>
 						<c:forEach var="lc" items="${panierList}">
 							<tr bgcolor="lightyellow">
 								<td><b>${lc.produit.nom}</b></td>
 								<td>${lc.quantite}</td>
 								<td>${lc.prix}</td>
-								<td><a href="${pageContext.request.contextPath}/client/retirerPanier/${lc.produit.nom}">Retirer du panier</a></td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -46,13 +44,6 @@
 	</div>
 	
 	<h3 align="center">Prix total : ${prix} </h1>
-	
-	<br/><br/>
-	<a href="${pageContext.request.contextPath}/client/creerClient">Créer un compte client</a>
-	
-	<br/><br/>
-	<a href="${pageContext.request.contextPath}/client/connexion">Poursuivre la commande</a>
-
 
 </body>
 </html>

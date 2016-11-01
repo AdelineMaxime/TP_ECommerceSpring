@@ -26,5 +26,12 @@ public class ClientServiceImpl implements IClientService {
 
 		return clientDao.isExistClientDao(nom, password);
 	}
+	
+	@Override
+	public int isExistClientService(String nom) {
+
+		return clientDao.isExistClientDao(nom);
+	}
+
 
 }
