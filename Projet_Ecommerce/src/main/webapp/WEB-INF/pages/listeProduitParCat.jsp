@@ -7,9 +7,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Categorie ${nomCat}</title>
 </head>
 <body>
+
+	<a href="${pageContext.request.contextPath}/client/index">Accueil</a>
+	<br />
+	<a href="${pageContext.request.contextPath}/client/panier">Aller au
+		panier</a>
+
+	<div align="center">
+		<h1 style="background-color: lightgreen; color: darkgreen">Produit de la catégorie ${nomCat}</h1>
+	</div>
 
 	<div align="center">
 		<table align="center" width="80%" cellspacing="0" cellpadding="5">

@@ -34,5 +34,16 @@ public class ClientDaoImpl implements IClientDao {
 		
 		return query.list().size();
 	}
+	
+	@Override
+	public int isExistClientDao(String nom) {
+
+		Session session = sf.getCurrentSession();
+		String req = "SELECT c FROM Client c WHERE c.nom=:nom";
+		Query query = session.createQuery(req);
+		query.setParameter("nom", nom);
+		
+		return query.list().size();
+	}
 
 }

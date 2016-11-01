@@ -35,8 +35,8 @@ public class Panier implements Serializable{
 		@JoinColumn(name="client_id",referencedColumnName="id_client")
 		private Client clientP;
 		
-//		@OneToMany(mappedBy="panier")
-//		private List<LigneCommande> listeLC;
+		@OneToMany(mappedBy="panier")
+		private List<LigneCommande> listeLC;
 //		
 //		@OneToOne(mappedBy="panier")
 //		private Commande cmd;
@@ -68,13 +68,13 @@ public class Panier implements Serializable{
 			this.id_panier = id_panier;
 			this.prixTotal = prixTotal;
 		}
+		
 
 //-------------------------------------------------------------------------------------------------------------
 //------------------------------3_Les Getters et Setters-------------------------------------------------------
 	/**
 	 * 3_Les Getters et Setters
 	 */
-
 
 		/**
 		 * @return the id_panier
@@ -112,18 +112,18 @@ public class Panier implements Serializable{
 		public void setClientP(Client client) {
 			this.clientP = client;
 		}
-//		/**
-//		 * @return the listeLC
-//		 */
-//		public List<LigneCommande> getListeLC() {
-//			return listeLC;
-//		}
-//		/**
-//		 * @param listeLC the listeLC to set
-//		 */
-//		public void setListeLC(List<LigneCommande> listeLC) {
-//			this.listeLC = listeLC;
-//		}
+		/**
+		 * @return the listeLC
+		 */
+		public List<LigneCommande> getListeLC() {
+			return listeLC;
+		}
+		/**
+		 * @param listeLC the listeLC to set
+		 */
+		public void setListeLC(List<LigneCommande> listeLC) {
+			this.listeLC = listeLC;
+		}
 //		/**
 //		 * @return the cmd
 //		 */
