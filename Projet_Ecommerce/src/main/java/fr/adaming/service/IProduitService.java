@@ -13,7 +13,5 @@ public interface IProduitService {
 	public void deleteProductService(Produit produit);
 	public void updateProductService(Produit produit);
 	public List<Produit> getProductByCatService(int id);
-	public void selectProductService(Produit produit);
-	public List<Produit> getAllSelectedProductService();
 	
 }

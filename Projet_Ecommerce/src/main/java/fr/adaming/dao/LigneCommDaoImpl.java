@@ -10,21 +10,25 @@ import org.springframework.stereotype.Repository;
 
 import fr.adaming.model.LigneCommande;
 
-
 @Repository
 public class LigneCommDaoImpl implements ILigneCommDao {
 
 	@Autowired
 	private SessionFactory sf;
-	
-	
+
+	/**
+	 * Ajouter une ligne de commande
+	 */
 	@Override
 	public void addLigneCommDao(LigneCommande lc) {
 
-		Session session = sf.openSession();		
+		Session session = sf.openSession();
 		session.save(lc);
 	}
 
+	/**
+	 * Supprimer une ligne de commande
+	 */
 	@Override
 	public void deleteLigneCommDao(LigneCommande lc) {
 
@@ -32,10 +36,13 @@ public class LigneCommDaoImpl implements ILigneCommDao {
 		String req = "DELETE FROM LigneCommande l WHERE l.id_LC=:id";
 		Query query = session.createQuery(req);
 		query.setParameter("id", lc.getId_LC());
-		query.executeUpdate();		
-		
+		query.executeUpdate();
+
 	}
 
+	/**
+	 * Modifier une ligne de commande
+	 */
 	@Override
 	public void updateLigneCommDao(int qte) {
 
@@ -44,17 +51,21 @@ public class LigneCommDaoImpl implements ILigneCommDao {
 		Query query = session.createQuery(req);
 		query.setParameter("qte", qte);
 		query.executeUpdate();
-		
+
 	}
 
+	/**
+	 * Obtenir toutes les lignes de commande
+	 */
 	@Override
 	public List<LigneCommande> getAllLigneCommDao() {
 
 		Session session = sf.getCurrentSession();
 		String req = "FROM LigneCommande";
 		Query query = session.createQuery(req);
+		@SuppressWarnings("unchecked")
 		List<LigneCommande> liste = query.list();
-		
+
 		return liste;
 	}
 

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IProduitDao;
-import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
 
 @Service("produitServiceBean")
@@ -18,7 +17,9 @@ public class ProduitServiceImpl implements IProduitService {
 	@Autowired
 	private IProduitDao produitDao;
 	
-	
+	/**
+	 * Ajouter un produit
+	 */
 	@Override
 	public void addProductService(Produit produit) {
 
@@ -27,6 +28,9 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 
+	/**
+	 * Obtenir un prduit à l'aide de son nom
+	 */
 	@Override
 	public Produit getProductByNameService(String name) {
 
@@ -34,6 +38,9 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 
+	/**
+	 * Obtenir tous les produits
+	 */
 	@Override
 	public List<Produit> getAllProductService() {
 
@@ -41,6 +48,9 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 
+	/**
+	 * Supprimer un produit
+	 */
 	@Override
 	public void deleteProductService(Produit produit) {
 	
@@ -48,6 +58,9 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 
+	/**
+	 * Modifier un produit
+	 */
 	@Override
 	public void updateProductService(Produit produit) {
 
@@ -55,26 +68,14 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 
+	/**
+	 * Obtenir tous les produits d'une catégorie
+	 */
 	@Override
 	public List<Produit> getProductByCatService(int id) {
 
 		return produitDao.getProductByCatDao(id);
 	}
-
-
-	@Override
-	public void selectProductService(Produit produit) {
-
-		produitDao.selectProductDao(produit);
-	}
-
-
-	@Override
-	public List<Produit> getAllSelectedProductService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	
 
 }

@@ -44,6 +44,12 @@ public class ClientController {
 
 	Panier panierC = new Panier();
 
+	/**
+	 * Initialisation de la page index du client
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String initClient(ModelMap model) {
 
@@ -54,6 +60,13 @@ public class ClientController {
 		return "indexClient";
 	}
 
+	/**
+	 * Récupérer la liste des produits d'une catégorie
+	 * 
+	 * @param idCat
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/listeProd/{id_cat}", method = RequestMethod.GET)
 	public String getProduitsByIdCategorie(@PathVariable("id_cat") int idCat, ModelMap model) {
 		List<Produit> liste = produitService.getProductByCatService(idCat);
@@ -63,6 +76,13 @@ public class ClientController {
 		return "listeProduitParCat";
 	}
 
+	/**
+	 * Ajouter un produit au panier
+	 * 
+	 * @param nomProd
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/addPanier/{nom_prod}", method = RequestMethod.GET)
 	public String addPanier(@PathVariable("nom_prod") String nomProd, ModelMap model) {
 
@@ -75,10 +95,11 @@ public class ClientController {
 
 		} else {
 
+			// Rechercher la ligne de commande correspondant au produit
 			LigneCommande lc1 = Articles.get(p1.getId_produit());
 
-			// Si le produit n'a pas encore été ajouté au panier
-			if (lc1 == null) {
+			
+			if (lc1 == null) {		// Si le produit n'a pas encore été ajouté au panier
 
 				// Créer une nouvelle ligne de commande correspondante
 				LigneCommande lc = new LigneCommande();
@@ -89,27 +110,22 @@ public class ClientController {
 				// Ajouter la ligne de commande à la map avec l'id du produit comme clé
 				Articles.put(p1.getId_produit(), lc);
 
-				// Modifier le booléen Selection de produit en True une fois le produit ajouté au panier
-				p1.setSelection(true);
-
-			} else {
-				// Si le produit a déjà été ajouté au panier
-				// Rechercher la ligne de commande correspondante
-				LigneCommande lc = Articles.get(p1.getId_produit());
-
+				
+			} else {				// Si le produit a déjà été ajouté au panier
+				
+				
 				// Incrémenter la quantité
-				lc.setQuantite(lc.getQuantite() + 1);
+				lc1.setQuantite(lc1.getQuantite() + 1);
 
 				// Ajuster le prix
-				lc.setPrix(p1.getPrix() * lc.getQuantite());
-
+				lc1.setPrix(p1.getPrix() * lc1.getQuantite());
 			}
-			
+
+			// Retirer un produit du stock
 			int qte = p1.getQuantite();
-			p1.setQuantite(qte-1);
+			p1.setQuantite(qte - 1);
 		}
-		
-		
+
 		// Actualiser le panier
 		List<LigneCommande> listePanier = new ArrayList<LigneCommande>();
 		double prix = 0;
@@ -130,6 +146,12 @@ public class ClientController {
 		return "indexClient";
 	}
 
+	/**
+	 * Récupérer les données du panier
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/panier", method = RequestMethod.GET)
 	public String voirPanier(ModelMap model) {
 
@@ -147,6 +169,7 @@ public class ClientController {
 			panier.setPrixTotal(panier.getPrixTotal() + lc.getPrix());
 		}
 
+		// Actualiser le panier du client
 		panierC.setListeLC(lcList);
 		panierC.setPrixTotal(panier.getPrixTotal());
 
@@ -156,6 +179,13 @@ public class ClientController {
 		return "panier";
 	}
 
+	
+	/**
+	 * Initialiser le formulaire de création d'un client
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/creerClient", method = RequestMethod.GET)
 	public ModelAndView addClient(ModelMap model) {
 
@@ -164,18 +194,26 @@ public class ClientController {
 		return new ModelAndView(viewName, "client", new Client());
 	}
 
+	/**
+	 * Création d'un nouveau client
+	 * 
+	 * @param client
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/addClient", method = RequestMethod.POST)
 	public String ajouterClient(@ModelAttribute("client") Client client, ModelMap model) {
 
+		// Vérifier que le client n'a pas encore de compte
 		int exist = clientService.isExistClientService(client.getNom());
 
-		if (exist == 0) {
+		if (exist == 0) {		// Si le client n'a pas encore de compte à ce nom - Créer le compte et continuer la procédure
 
 			clientService.addClientService(client);
 
 			return "connexionClient";
 
-		} else {
+		} else {				// Si il existe déjà un compte à ce nom - Redemander le remplissage du formulaire
 
 			model.addAttribute("message", "Ce nom dispose déjà d'un compte");
 
@@ -184,6 +222,12 @@ public class ClientController {
 
 	}
 
+	/**
+	 * Initialiser le formulaire de connexion client
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/connexion", method = RequestMethod.GET)
 	public ModelAndView seConnecter(ModelMap model) {
 
@@ -192,18 +236,26 @@ public class ClientController {
 		return new ModelAndView(viewName, "client", new Client());
 	}
 
+	/**
+	 * Soumettre la connexion du client
+	 * 
+	 * @param client
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/connecterClient", method = RequestMethod.POST)
 	public String connexionClient(@ModelAttribute Client client, ModelMap model) {
 
+		// Vérifier s'il existe un compte pour ce client
 		int exist = clientService.isExistClientService(client.getNom(), client.getPassword());
 
-		if (exist == 0) {
+		if (exist == 0) { 		// S'il n'existe pas de compte avec ces paramètres - Permettre une nouvelle tentative
 
 			model.addAttribute("message",
 					"Ce compte n'existe pas, veuillez vérifier vos identifiants ou créer un compte");
 			return "connexionClient";
 
-		} else {
+		} else {				// Si le compte existe - Valider connexion et obtenir le récapitulatif de la commande
 
 			model.addAttribute("nomClient", client.getNom());
 
@@ -217,12 +269,29 @@ public class ClientController {
 
 	}
 
+	/**
+	 * Supprimer un produit du panier
+	 * 
+	 * @param nomProd
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/retirerPanier/{nomProduit}", method = RequestMethod.GET)
 	public String retirerPanier(@ModelAttribute("nomProduit") String nomProd, ModelMap model) {
 
+		// Trouver le produit
 		Produit produit = produitService.getProductByNameService(nomProd);
+		
+		// Déterminer la quantité qui était demandée par le client
+		int qte = Articles.get(produit.getId_produit()).getQuantite();
+		
+		// Ajouter la quantité au stock
+		produit.setQuantite(produit.getQuantite()+qte);
+		
+		// Retirer le produit de la map des produits demandés par le client
 		Articles.remove(produit.getId_produit());
-
+		
+		// Récupérer une liste des produits du panier
 		List<LigneCommande> lcList = new ArrayList<LigneCommande>();
 		Panier panier = new Panier();
 		panier.setPrixTotal(0.00);
@@ -236,6 +305,7 @@ public class ClientController {
 			panier.setPrixTotal(panier.getPrixTotal() + lc.getPrix());
 		}
 
+		// Actualiser les données du panier
 		panierC.setListeLC(lcList);
 		panierC.setPrixTotal(panier.getPrixTotal());
 
@@ -245,20 +315,31 @@ public class ClientController {
 		return "panier";
 	}
 
+	/**
+	 * Finaliser la commande
+	 * 
+	 * @param client
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/final", method = RequestMethod.GET)
 	public String finaliser(@ModelAttribute("client") Client client, ModelMap model) {
 
-		// Injecter les paramètres de la commande
+		// Créer une nouvelle commande
 		Commande com = new Commande();
+		
+		// Récupérer la date du jour
 		Calendar c = Calendar.getInstance();
 		Date date = new Date(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
 		com.setDate_commande(date);
 
+		// Récupérer la liste des produits commandés
 		List<LigneCommande> lcList = new ArrayList<LigneCommande>();
 		for (LigneCommande lc : Articles.values()) {
 			lcList.add(lc);
 		}
 
+		// Injecter les données de la commande
 		com.setClient(client);
 		com.setPanier(panierC);
 
@@ -267,6 +348,7 @@ public class ClientController {
 		panierC.setPrixTotal(0.00);
 		panierC.setClientP(null);
 
+		// Réinitialiser la map des articles demandés par le client
 		Articles.clear();
 
 		List<Categorie> listeCat = categorieService.getAllCategorieService();

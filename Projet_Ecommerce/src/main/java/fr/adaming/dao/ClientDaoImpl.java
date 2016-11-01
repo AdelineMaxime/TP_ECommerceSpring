@@ -15,6 +15,9 @@ public class ClientDaoImpl implements IClientDao {
 	private SessionFactory sf;
 	
 	
+	/**
+	 * Ajouter un client
+	 */
 	@Override
 	public void addClientDao(Client client) {
 
@@ -23,6 +26,10 @@ public class ClientDaoImpl implements IClientDao {
 		
 	}
 
+	/**
+	 * Vérifier s'il existe un compte avec le nom et le mdp proposés
+	 * Retourne 0 s'il n'en existe pas
+	 */
 	@Override
 	public int isExistClientDao(String nom, String password) {
 
@@ -35,6 +42,10 @@ public class ClientDaoImpl implements IClientDao {
 		return query.list().size();
 	}
 	
+	/**
+	 * Vérifier s'il existe déjà un compte avec le même nom de client
+	 * Retourne 0 s'il n'en existe pas
+	 */
 	@Override
 	public int isExistClientDao(String nom) {
 
