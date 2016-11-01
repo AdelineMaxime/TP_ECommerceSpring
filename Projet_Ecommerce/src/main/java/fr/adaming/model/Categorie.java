@@ -30,7 +30,7 @@ public class Categorie implements Serializable {
 		
 		private String nom;
 		
-		@OneToMany(mappedBy="categorie", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+		@OneToMany(mappedBy="categorie", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 		private List<Produit> listeProduit;
 //-------------------------------------------------------------------------------------------------------------
 //------------------------------2_Les constructeurs------------------------------------------------------------	

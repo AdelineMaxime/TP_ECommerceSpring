@@ -37,7 +37,7 @@ public class Produit implements Serializable {
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="cat_id", referencedColumnName="id_categorie")
+	@JoinColumn(name="cat_id", referencedColumnName="id_categorie", nullable=true)
 	private Categorie categorie;
 
 
