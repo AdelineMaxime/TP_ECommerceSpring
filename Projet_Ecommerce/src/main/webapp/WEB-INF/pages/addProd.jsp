@@ -11,16 +11,16 @@
 </head>
 <body>
 
-	<h1 align="center">Ajouter un Produit</h1>
+	<div align="center">
+		<h1 style="background-color: lightgreen; color: darkgreen">Ajouter un Produit</h1>
+	</div>
 	<form:form method="post" action="insererProduit"
 		modelAttribute="produit">
 
-		<table style="text-align: center;">
-			<tr>Ajouter un Produit
-			</tr>
-			<tr>
-				<td><form:input type="hidden" path="id_produit" /></td>
-			</tr>
+		<table align="center">
+<!-- 			<tr> -->
+<%-- 				<td><form:input type="hidden" path="id_produit" /></td> --%>
+<!-- 			</tr> -->
 			<tr>
 				<td><form:label path="nom">Nom:</form:label></td>
 				<td><form:input path="nom" /></td>

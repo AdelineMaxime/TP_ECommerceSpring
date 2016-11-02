@@ -6,6 +6,11 @@ import fr.adaming.model.Categorie;
 
 public interface ICategorieDao {
 	
+	/**
+	 * Définition des méthodes
+	 * 
+	 */
+	
 	public void addCategorieDao(Categorie categorie);
 	public void deleteCategorieDao(Categorie categorie);
 	public void updateCategorieDao(Categorie categorie);

@@ -21,6 +21,9 @@ public class CategorieDaoImpl implements ICategorieDao {
 		this.sf = sf;
 	}
 	
+	/**
+	 * Redéfinition de la méthode d'ajout d'une catégorie
+	 */
 
 	@Override
 	public void addCategorieDao(Categorie categorie) {
@@ -29,7 +32,11 @@ public class CategorieDaoImpl implements ICategorieDao {
 		session.save(categorie);
 
 	}
-
+	
+	/**
+	 * Redéfinition de la méthode de suppression d'une catégorie
+	 */
+	
 	@Override
 	public void deleteCategorieDao(Categorie categorie) {
 		
@@ -41,7 +48,11 @@ public class CategorieDaoImpl implements ICategorieDao {
 		query.executeUpdate();
 		
 	}
-
+	
+	/**
+	 *Redéfinition de la méthode de modification d'une catégorie 
+	 */
+	
 	@Override
 	public void updateCategorieDao(Categorie categorie) {
 		
@@ -53,6 +64,10 @@ public class CategorieDaoImpl implements ICategorieDao {
 		query.executeUpdate();
 
 	}
+	
+	/**
+	 * Redéfinition de la méthode de récupération des catégories
+	 */
 
 	@Override
 	public List<Categorie> getAllCategorieDao() {
@@ -64,7 +79,10 @@ public class CategorieDaoImpl implements ICategorieDao {
 		
 		return catListe;
 	}
-
+	
+	/**
+	 * Redéfinition de la méthode de récupération d'une catégorie via son nom
+	 */
 
 	@Override
 	public Categorie getCategorieByNameDao(String name) {

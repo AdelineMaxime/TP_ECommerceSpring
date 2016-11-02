@@ -16,13 +16,20 @@ public class CategorieServiceImpl implements ICategorieService {
 	@Autowired
 	ICategorieDao categorieDao;
 	
+	/**
+	 * Redéfinition de la méthode d'ajout d'une catégorie
+	 */
+	
 	@Override
 	public void addCategorieService(Categorie categorie) {
 		
-		
 		categorieDao.addCategorieDao(categorie);
-
+		
 	}
+	
+	/**
+	 * Redéfinition de la méthode de suppression d'une catégorie
+	 */
 
 	@Override
 	public void deleteCategorieService(Categorie categorie) {
@@ -30,6 +37,10 @@ public class CategorieServiceImpl implements ICategorieService {
 		categorieDao.deleteCategorieDao(categorie);
 
 	}
+	
+	/**
+	 *Redéfinition de la méthode de modification d'une catégorie 
+	 */
 
 	@Override
 	public void updateCategorieService(Categorie categorie) {
@@ -37,13 +48,20 @@ public class CategorieServiceImpl implements ICategorieService {
 		categorieDao.updateCategorieDao(categorie);
 
 	}
+	
+	/**
+	 * Redéfinition de la méthode de récupération des catégories
+	 */
 
 	@Override
 	public List<Categorie> getAllCategorieService() {
 
 		return categorieDao.getAllCategorieDao();
 	}
-
+	
+	/**
+	 * Redéfinition de la méthode de récupération d'une catégorie via son nom
+	 */
 
 	@Override
 	public Categorie getCategorieByNameService(String name) {

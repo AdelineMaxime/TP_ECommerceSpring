@@ -12,14 +12,16 @@
 <body>
 <body>
 
-	<h1 align="center">Ajouter une catégorie</h1>
+	<div align="center">
+		<h1 style="background-color: lightgreen; color: darkgreen">Ajouter une catégorie</h1>
+	</div>
+
 	<form:form method="post" action="insererCategorie"
 		modelAttribute="categorie">
 
-		<table style="text-align: center;">
-			<tr>Ajouter une catégorie</tr>
+		<table align = "center">
 			<tr>
-				<td><form:label path="nom">Nom:</form:label></td>
+				<td><form:label path="nom">Nom de la catégorie :</form:label></td>
 				<td><form:input path="nom" /></td>
 			</tr>
 
@@ -28,9 +30,10 @@
 			</tr>
 
 		</table>
-	</form:form>	
-	
-	<a href="${pageContext.request.contextPath}/gestion/index">Retour à l'accueil Gestionnaire</a>
+	</form:form>
+
+	<a href="${pageContext.request.contextPath}/gestion/index" >Retour à
+		l'accueil Gestionnaire</a>
 
 </body>
 </html>

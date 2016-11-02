@@ -8,6 +8,10 @@
 </head>
 <body>
 
+	<div align="center">
+		<h1 style="background-color: lightgreen; color: darkgreen">Identification du Gestionnaire </h1>
+	</div>
+
 	<form action="j_spring_security_check" method="post">
 
 		<table align="center">
