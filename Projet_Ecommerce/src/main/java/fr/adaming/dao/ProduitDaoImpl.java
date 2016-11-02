@@ -77,7 +77,7 @@ public class ProduitDaoImpl implements IProduitDao {
 	public void updateProductDao(Produit produit) {
 
 		Session session = sf.getCurrentSession();
-		String req = "UPDATE Produit p SET p.nom=:nom, p.description=:descr, p.prix=:prix, p.quantite=:qte WHERE p.id_product=:id";
+		String req = "UPDATE Produit p SET p.nom=:nom, p.description=:descr, p.prix=:prix, p.quantite=:qte WHERE p.id_produit=:id";
 		Query query = session.createQuery(req);
 		query.setParameter("nom", produit.getNom());
 		query.setParameter("descr", produit.getDescription());

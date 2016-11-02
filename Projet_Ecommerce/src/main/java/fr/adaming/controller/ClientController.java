@@ -24,6 +24,8 @@ import fr.adaming.model.Panier;
 import fr.adaming.model.Produit;
 import fr.adaming.service.ICategorieService;
 import fr.adaming.service.IClientService;
+import fr.adaming.service.ICommandeService;
+import fr.adaming.service.IPanierService;
 import fr.adaming.service.IProduitService;
 
 @Controller
@@ -38,6 +40,12 @@ public class ClientController {
 
 	@Autowired
 	private IClientService clientService;
+	
+	@Autowired
+	private IPanierService panierService;
+	
+	@Autowired
+	private ICommandeService commandeService;
 
 	// Map regroupant toutes les lignes de commandes du client
 	Map<Integer, LigneCommande> Articles = new HashMap<Integer, LigneCommande>();
@@ -124,6 +132,7 @@ public class ClientController {
 			// Retirer un produit du stock
 			int qte = p1.getQuantite();
 			p1.setQuantite(qte - 1);
+			produitService.updateProductService(p1);
 		}
 
 		// Actualiser le panier
@@ -287,6 +296,7 @@ public class ClientController {
 		
 		// Ajouter la quantité au stock
 		produit.setQuantite(produit.getQuantite()+qte);
+		produitService.updateProductService(produit);
 		
 		// Retirer le produit de la map des produits demandés par le client
 		Articles.remove(produit.getId_produit());
@@ -330,7 +340,7 @@ public class ClientController {
 		
 		// Récupérer la date du jour
 		Calendar c = Calendar.getInstance();
-		Date date = new Date(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+		Date date = c.getTime();
 		com.setDate_commande(date);
 
 		// Récupérer la liste des produits commandés
@@ -340,8 +350,15 @@ public class ClientController {
 		}
 
 		// Injecter les données de la commande
+		panierC.setClientP(client);
 		com.setClient(client);
 		com.setPanier(panierC);
+		
+		// Enregistrer le panier dans la base de données
+		panierService.addPanierService(panierC);
+		
+		// Enregistrer la commande dans la base de données
+		commandeService.addCommandeService(com);
 
 		// Réinitialiser le panier
 		panierC.setListeLC(null);
