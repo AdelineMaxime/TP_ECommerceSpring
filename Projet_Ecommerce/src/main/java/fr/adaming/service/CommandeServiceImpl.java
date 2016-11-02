@@ -13,6 +13,9 @@ public class CommandeServiceImpl implements ICommandeService {
 	@Autowired
 	private ICommandeDao commandeDao;
 	
+	/**
+	 * Créer une nouvelle commande
+	 */
 	@Override
 	public void addCommandeService(Commande commande) {
 

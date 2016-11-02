@@ -43,4 +43,13 @@ public class ClientServiceImpl implements IClientService {
 		return clientDao.isExistClientDao(nom);
 	}
 
+	/**
+	 * Récupérer un client par son nom
+	 */
+	@Override
+	public Client getClientByNameDao(String nomClient) {
+
+		return clientDao.getClientByNameDao(nomClient);
+	}
+
 }

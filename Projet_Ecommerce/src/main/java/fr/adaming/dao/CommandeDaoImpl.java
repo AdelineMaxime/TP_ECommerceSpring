@@ -14,6 +14,9 @@ public class CommandeDaoImpl implements ICommandeDao {
 	@Autowired
 	private SessionFactory sf;
 	
+	/**
+	 * Créer une nouvelle commande
+	 */
 	@Override
 	public void addCommandeDao(Commande commande) {
 

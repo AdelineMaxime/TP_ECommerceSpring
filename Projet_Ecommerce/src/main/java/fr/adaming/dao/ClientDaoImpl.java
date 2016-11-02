@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import fr.adaming.model.Client;
+import fr.adaming.model.Produit;
 
 @Repository
 public class ClientDaoImpl implements IClientDao {
@@ -55,6 +56,24 @@ public class ClientDaoImpl implements IClientDao {
 		query.setParameter("nom", nom);
 		
 		return query.list().size();
+	}
+	
+	/**
+	 * Récupérer un client par son nom
+	 * 
+	 * @param nomClient
+	 * @return
+	 */
+	@Override
+	public Client getClientByNameDao(String nomClient) {
+		
+		Session session = sf.getCurrentSession();
+		String req = "SELECT c FROM Client c WHERE c.nom=:nom";
+		Query query = session.createQuery(req);
+		query.setParameter("nom", nomClient);
+
+		return  (Client) query.uniqueResult();
+		
 	}
 
 }

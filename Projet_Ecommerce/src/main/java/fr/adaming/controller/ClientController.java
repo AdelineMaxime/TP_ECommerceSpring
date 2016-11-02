@@ -332,11 +332,14 @@ public class ClientController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "/final", method = RequestMethod.GET)
-	public String finaliser(@ModelAttribute("client") Client client, ModelMap model) {
+	@RequestMapping(value = "/final/{nomClient}", method = RequestMethod.GET)
+	public String finaliser(@ModelAttribute("nomClient") String nomClient, ModelMap model) {
 
 		// Créer une nouvelle commande
 		Commande com = new Commande();
+		
+		// Récupérer le client correspondant au nom
+		Client client = clientService.getClientByNameDao(nomClient);
 		
 		// Récupérer la date du jour
 		Calendar c = Calendar.getInstance();

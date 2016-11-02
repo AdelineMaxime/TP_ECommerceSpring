@@ -13,6 +13,9 @@ public class PanierServiceImpl implements IPanierService {
 	@Autowired
 	private IPanierDao panierService;
 	
+	/**
+	 * Créer un nouveau panier
+	 */
 	@Override
 	public void addPanierService(Panier panier) {
 

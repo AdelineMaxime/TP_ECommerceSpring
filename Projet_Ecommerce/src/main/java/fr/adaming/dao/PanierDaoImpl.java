@@ -14,7 +14,9 @@ public class PanierDaoImpl implements IPanierDao {
 	@Autowired
 	private SessionFactory sf;
 	
-	
+	/**
+	 * Créer un nouveau panier
+	 */
 	@Override
 	public void addPanierDao(Panier panier) {
 
