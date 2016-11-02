@@ -20,8 +20,8 @@
 						<tr>
 							<td colspan="7"
 								style="background-color: lightblue; color: darkgreen; font-size: 16pt"
-								align="center">Liste Des Produits de ${categorie.nom}, d'ID
-								${categorie.id_categorie}</td>
+								align="center">Liste des produits de la catégorie ${nomCat}, d'Id
+								${IdCat}</td>
 						</tr>
 						<tr bgcolor="grey" style="color: white">
 							<th>No</th>
@@ -39,8 +39,8 @@
 								<td align="center">${produit.prix}</td>
 								<td align="center">${produit.quantite}</td>
 								<td align="center"><a
-									href="${pageContext.request.contextPath}/gestion/editProduit/${produit.nom}">
-										Modifier le produit</a> // <a
+									href="${pageContext.request.contextPath}/gestion/editProduit?name=${produit.nom}">Modifier
+										le produit</a> // <a
 									href="${pageContext.request.contextPath}/gestion/supprimerProd/${produit.nom}">
 										Supprimer le produit </a></td>
 							</tr>

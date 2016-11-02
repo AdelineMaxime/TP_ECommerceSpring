@@ -19,9 +19,10 @@ import fr.adaming.service.IProduitService;
 @Controller
 @RequestMapping("/gestion")
 public class GestionController {
-	
+
 	/**
-	 * Autowiring permettant les méthodes contenues dans les interfaces ICategorieService et IProduitService
+	 * Autowiring permettant les méthodes contenues dans les interfaces
+	 * ICategorieService et IProduitService
 	 */
 
 	@Autowired
@@ -29,30 +30,32 @@ public class GestionController {
 
 	@Autowired
 	IProduitService produitService;
-	
+
 	/**
 	 * Initialisation de la page index du Gestionnaire
+	 * 
 	 * @param model
 	 * @return
 	 */
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String listObjets(ModelMap model) {
-		
-		//Récupération des catégories
-		
+
+		// Récupération des catégories
+
 		List<Categorie> liste = categorieService.getAllCategorieService();
 
 		model.addAttribute("title", "Accueil gestionnaire");
 		model.addAttribute("listCategorie", liste);
-		
-		//Nom de la vue renvoyée
+
+		// Nom de la vue renvoyée
 		return "indexGest";
 
 	}
-	
+
 	/**
 	 * Ajout d'une catégorie
+	 * 
 	 * @return
 	 */
 
@@ -60,17 +63,17 @@ public class GestionController {
 	public ModelAndView ajouterCategorie() {
 
 		String viewName = "addCat";
-		
 
 		return new ModelAndView(viewName, "categorie", new Categorie());
 
 	}
-	
+
 	/**
 	 * Ajout d'un produit
+	 * 
 	 * @return
 	 */
-	
+
 	@RequestMapping(value = "/addProd", method = RequestMethod.GET)
 	public ModelAndView ajouterProduit() {
 
@@ -79,9 +82,10 @@ public class GestionController {
 		return new ModelAndView(viewName, "produit", new Produit());
 
 	}
-	
+
 	/**
 	 * Création d'une nouvelle catégorie
+	 * 
 	 * @param categorie
 	 * @param model
 	 * @return
@@ -93,14 +97,16 @@ public class GestionController {
 		this.categorieService.addCategorieService(categorie);
 
 		model.addAttribute("listCategorie", categorieService.getAllCategorieService());
+
 		model.addAttribute("title", "Accueil gestionnaire");
 
 		return "indexGest";
 
 	}
-	
+
 	/**
 	 * Création d'un nouveau Produit
+	 * 
 	 * @param produit
 	 * @param model
 	 * @return
@@ -108,19 +114,19 @@ public class GestionController {
 
 	@RequestMapping(value = "/insererProduit", method = RequestMethod.POST)
 	public String insererProduit(@ModelAttribute("produit") Produit produit, ModelMap model) {
-		
-		//Si le nom du produit n'existe pas
-		if(produit.getNom() == null){
-			
-			//Appel de la méthode d'ajout d'un produit
-		this.produitService.addProductService(produit);
+
+		// Si le nom du produit n'existe pas
+		if (produit.getNom() == null) {
+
+			// Appel de la méthode d'ajout d'un produit
+			this.produitService.addProductService(produit);
 			
 			//Sinon, appelle de la méthode d'update d'un produit
-		}else {
-			
+		} else {
+
 			this.produitService.updateProductService(produit);
 		}
-			
+
 		model.addAttribute("listCategorie", categorieService.getAllCategorieService());
 		model.addAttribute("title", "Accueil gestionnaire");
 
@@ -155,15 +161,19 @@ public class GestionController {
 	 * @param model
 	 * @return
 	 */
-	
+
 	@RequestMapping(value = "/listeProd/{id_cat}", method = RequestMethod.GET)
-	
+
 	public String getProduitsByIdCategorie(@PathVariable("id_cat") int idCat, ModelMap model) {
-		
+
 		List<Produit> liste = produitService.getProductByCatService(idCat);
-		
+
 		model.addAttribute("listeProdCat", liste);
-		
+
+		model.addAttribute("IdCat", liste.get(0).getCategorie().getId_categorie());
+
+		model.addAttribute("nomCat", liste.get(0).getCategorie().getNom());
+
 		return "listeProduits";
 	}
 	
@@ -173,7 +183,7 @@ public class GestionController {
 	 * @param model
 	 * @return
 	 */
-	
+
 	@RequestMapping(value = "/supprimerProd/{produitName}", method = RequestMethod.GET)
 	public String supprimerProduit(@PathVariable("produitName") String prodName, ModelMap model) {
 
@@ -181,7 +191,9 @@ public class GestionController {
 
 		this.produitService.deleteProductService(prod);
 
-		model.addAttribute("listProduit", produitService.getAllProductService());
+		List<Produit> liste = produitService.getAllProductService();
+
+		model.addAttribute("listProduit", liste);
 		model.addAttribute("title", "Accueil gestionnaire");
 
 		return "listeProduits";
@@ -193,15 +205,14 @@ public class GestionController {
 	 * @param name
 	 * @return
 	 */
-	@RequestMapping(value = "/editProduit/{produitName}", method = RequestMethod.GET)
-	public String editerProduit(@PathVariable("produitName") String name) {
+
+	@RequestMapping(value = "/editProduit", method = RequestMethod.GET)
+	public String editerProduit(String name) {
 
 		this.produitService.getProductByNameService(name);
 
 		return "addProd";
 
 	}
-
-	
 
 }
