@@ -115,17 +115,7 @@ public class GestionController {
 	@RequestMapping(value = "/insererProduit", method = RequestMethod.POST)
 	public String insererProduit(@ModelAttribute("produit") Produit produit, ModelMap model) {
 
-		// Si le nom du produit n'existe pas
-		if (produit.getNom() == null) {
-
-			// Appel de la méthode d'ajout d'un produit
 			this.produitService.addProductService(produit);
-			
-			//Sinon, appelle de la méthode d'update d'un produit
-		} else {
-
-			this.produitService.updateProductService(produit);
-		}
 
 		model.addAttribute("listCategorie", categorieService.getAllCategorieService());
 		model.addAttribute("title", "Accueil gestionnaire");
