@@ -39,7 +39,7 @@
 								<td align="center">${produit.prix}</td>
 								<td align="center">${produit.quantite}</td>
 								<td align="center"><a
-									href="${pageContext.request.contextPath}/gestion/editProduit?name=${produit.nom}">Modifier
+									href="${pageContext.request.contextPath}/gestion/editProduit/${produit.nom}">Modifier
 										le produit</a> // <a
 									href="${pageContext.request.contextPath}/gestion/supprimerProd/${produit.nom}">
 										Supprimer le produit </a></td>

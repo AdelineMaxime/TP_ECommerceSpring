@@ -104,25 +104,7 @@ public class GestionController {
 
 	}
 
-	/**
-	 * Création d'un nouveau Produit
-	 * 
-	 * @param produit
-	 * @param model
-	 * @return
-	 */
-
-	@RequestMapping(value = "/insererProduit", method = RequestMethod.POST)
-	public String insererProduit(@ModelAttribute("produit") Produit produit, ModelMap model) {
-
-			this.produitService.addProductService(produit);
-
-		model.addAttribute("listCategorie", categorieService.getAllCategorieService());
-		model.addAttribute("title", "Accueil gestionnaire");
-
-		return "indexGest";
-
-	}
+	
 	
 	/**
 	 * Suppression d'une catégorie via son nom
@@ -138,6 +120,33 @@ public class GestionController {
 
 		this.categorieService.deleteCategorieService(cat);
 
+		model.addAttribute("listCategorie", categorieService.getAllCategorieService());
+		model.addAttribute("title", "Accueil gestionnaire");
+
+		return "indexGest";
+
+	}
+	/**
+	 * Création d'un nouveau Produit
+	 * 
+	 * @param produit
+	 * @param model
+	 * @return
+	 */
+
+	@RequestMapping(value = "/insererProduit", method = RequestMethod.POST)
+	public String insererProduit(@ModelAttribute("produit") Produit produit, ModelMap model) {
+			
+		if(produit.getId_produit() == 0){
+			
+			this.produitService.addProductService(produit);
+			
+		}else{
+			
+			this.produitService.updateProductService(produit);
+		}
+			
+		
 		model.addAttribute("listCategorie", categorieService.getAllCategorieService());
 		model.addAttribute("title", "Accueil gestionnaire");
 
@@ -196,13 +205,21 @@ public class GestionController {
 	 * @return
 	 */
 
-	@RequestMapping(value = "/editProduit", method = RequestMethod.GET)
-	public String editerProduit(String name) {
+	@RequestMapping(value = "/editProduit/{name}", method = RequestMethod.GET)
+	public String editerProduit(@PathVariable("name") String name, ModelMap model) {
 
-		this.produitService.getProductByNameService(name);
+		Produit p = this.produitService.getProductByNameService(name);
+		
+		model.addAttribute("produit", p);
+		//model.addAttribute("produitDescr", p.getDescription());
+		//model.addAttribute("produitQte", p.getQuantite());
+		//model.addAttribute("produitPrix", p.getPrix());
+		//model.addAttribute("produitCat", p.getCategorie().getId_categorie());
 
 		return "addProd";
 
 	}
+	
+	
 
 }

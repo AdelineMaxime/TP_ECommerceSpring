@@ -23,23 +23,23 @@
 <!-- 			</tr> -->
 			<tr>
 				<td><form:label path="nom">Nom:</form:label></td>
-				<td><form:input path="nom" /></td>
+				<td><form:input path="nom" />${produitNom}</td>
 			</tr>
 			<tr>
 				<td><form:label path="description">Description:</form:label></td>
-				<td><form:input path="description" /></td>
+				<td><form:input path="description" />${produitDescr}</td>
 			</tr>
 			<tr>
 				<td><form:label path="prix">Prix:</form:label></td>
-				<td><form:input path="prix" /></td>
+				<td><form:input path="prix" />${produitPrix}</td>
 			</tr>
 			<tr>
 				<td><form:label path="quantite">Quantite:</form:label></td>
-				<td><form:input path="quantite" /></td>
+				<td><form:input path="quantite" />${produitQte}</td>
 			</tr>
 			<tr>
 				<td><form:label path="categorie.id_categorie">ID Categorie:</form:label></td>
-				<td><form:input path="categorie.id_categorie" /></td>
+				<td><form:input path="categorie.id_categorie" />${produitCat}</td>
 			</tr>
 
 
